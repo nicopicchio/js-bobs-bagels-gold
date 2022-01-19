@@ -119,8 +119,3 @@ DONE - Special Offer: 6 Onion Bagels should be £2.49
 DONE - Special Offer: 6 Everything Bagels should be £2.49
 DONE - Special Offer: 12 Plain Bagels should be £3.99
 DONE - Special Offer: 1 Plain Bagel and 1 Coffee should be £1.25
-
-I
-
-
-
