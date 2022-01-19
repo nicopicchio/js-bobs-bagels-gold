@@ -28,7 +28,7 @@ describe("Basket", () => {
       }
     ]
     //execute 
-    basket.addBagelToBasket("Onion")
+    basket.addBagelToBasket("BGLO")
     const result = basket.getBasket()
     //verify
     expect(result).toEqual(expected);
@@ -51,8 +51,8 @@ describe("Basket", () => {
       }
     ]
     //execute 
-    basket.addBagelToBasket("Onion")
-    basket.addBagelToBasket("Plain")
+    basket.addBagelToBasket("BGLO")
+    basket.addBagelToBasket("BGLP")
     const result = basket.getBasket()
     //verify
     expect(result).toEqual(expected);
@@ -68,10 +68,10 @@ describe("Basket", () => {
         "variant": "Plain"
       }
     ]
-    basket.addBagelToBasket("Plain")
-    basket.addBagelToBasket("Blueberry")
+    basket.addBagelToBasket("BGLP")
+    basket.addBagelToBasket("BGLB")
     //execute 
-    basket.removeBagelFromBasket("Blueberry")
+    basket.removeBagelFromBasket("BGLB")
     const result = basket.getBasket()
     //verify
     expect(result).toEqual(expected);
@@ -87,14 +87,14 @@ describe("Basket", () => {
         "variant": "Blueberry"
       }
     ]
-    basket.addBagelToBasket("Onion")
-    basket.addBagelToBasket("Plain")
-    basket.addBagelToBasket("Garlic")
-    basket.addBagelToBasket("Blueberry")
+    basket.addBagelToBasket("BGLO")
+    basket.addBagelToBasket("BGLP")
+    basket.addBagelToBasket("BGLG")
+    basket.addBagelToBasket("BGLB")
     //execute 
-    basket.removeBagelFromBasket("Onion")
-    basket.removeBagelFromBasket("Plain")
-    basket.removeBagelFromBasket("Garlic")
+    basket.removeBagelFromBasket("BGLO")
+    basket.removeBagelFromBasket("BGLP")
+    basket.removeBagelFromBasket("BGLG")
     const result = basket.getBasket()
     //verify
     expect(result).toEqual(expected);
@@ -105,20 +105,20 @@ describe("Basket", () => {
     const expected = [
     ]
     //execute 
-    basket.addBagelToBasket("Blueberry")
-    basket.removeBagelFromBasket("Blueberry")
+    basket.addBagelToBasket("BGLB")
+    basket.removeBagelFromBasket("BGLB")
     const result = basket.getBasket()
     //verify
     expect(result).toEqual(expected);
   });
   it("Adding items to a full basket returns error", () => {
     //setup 
-    basket.addBagelToBasket("Blueberry")
-    basket.addBagelToBasket("Garlic")
-    basket.addBagelToBasket("Plain")
-    basket.addBagelToBasket("Onion")
+    basket.addBagelToBasket("BGLB")
+    basket.addBagelToBasket("BGLG")
+    basket.addBagelToBasket("BGLP")
+    basket.addBagelToBasket("BGLO")
     //execute    
-    const result = basket.addBagelToBasket("Asiago")
+    const result = basket.addBagelToBasket("BGLA")
     //verify
     expect(result).toEqual("Basket is full!");
   });
@@ -151,10 +151,10 @@ describe("Basket", () => {
         "variant": "Whole Wheat",
       }
     ]
-    basket.addBagelToBasket("Sesame")
-    basket.addBagelToBasket("Asiago")
-    basket.addBagelToBasket("Garlic")
-    basket.addBagelToBasket("Whole Wheat")
+    basket.addBagelToBasket("BGLS")
+    basket.addBagelToBasket("BGLA")
+    basket.addBagelToBasket("BGLG")
+    basket.addBagelToBasket("BGLW")
     //execute
     basket.addBagelToBasket("Blueberry") // blueberry should not be added to basket.
     const result = basket.getBasket()
@@ -180,8 +180,8 @@ describe("Basket", () => {
       }
     ]
     //execute 
-    basket.addBagelToBasket("Blueberry")
-    basket.addBagelToBasket("Blueberry")
+    basket.addBagelToBasket("BGLB")
+    basket.addBagelToBasket("BGLB")
     const result = basket.getBasket()
     //verify
     expect(result).toEqual(expected);
@@ -189,7 +189,7 @@ describe("Basket", () => {
 
   it("Remove a bagel that doesn't exist returns an error.", () => {
     //setup 
-    basket.addBagelToBasket("Plain")
+    basket.addBagelToBasket("BGLP")
     //execute 
     const result = basket.removeBagelFromBasket("sdfsdf")
     //verify
@@ -237,12 +237,12 @@ describe("Basket", () => {
       }
     ]
     basket.basketSize = 6
-    basket.addBagelToBasket("Plain")
-    basket.addBagelToBasket("Blueberry")
-    basket.addBagelToBasket("Sesame")
-    basket.addBagelToBasket("Asiago")
-    basket.addBagelToBasket("Garlic")
-    basket.addBagelToBasket("Whole Wheat")
+    basket.addBagelToBasket("BGLP")
+    basket.addBagelToBasket("BGLB")
+    basket.addBagelToBasket("BGLS")
+    basket.addBagelToBasket("BGLA")
+    basket.addBagelToBasket("BGLG")
+    basket.addBagelToBasket("BGLW")
     //execute 
     const result = basket.getBasket()
     //verify
@@ -252,7 +252,7 @@ describe("Basket", () => {
   it("Getting the price of one Bagel in my basket.", () => {
     //setup 
     const expected = 0.99
-    basket.addBagelToBasket("Asiago")
+    basket.addBagelToBasket("BGLA")
     //execute 
     const result = basket.getTotalOfBasket()
     //verify
@@ -262,11 +262,11 @@ describe("Basket", () => {
   it("Getting the price of multiple Bagels in my basket.", () => {
     //setup 
     const expected = 0.39 + 0.49 + 0.49  
-    basket.addBagelToBasket("Plain")
-    basket.addBagelToBasket("Blueberry")
-    basket.addBagelToBasket("Sesame")
-    basket.addBagelToBasket("Asiago")
-    basket.removeBagelFromBasket("Asiago")
+    basket.addBagelToBasket("BGLP")
+    basket.addBagelToBasket("BGLB")
+    basket.addBagelToBasket("BGLS")
+    basket.addBagelToBasket("BGLA")
+    basket.removeBagelFromBasket("BGLA")
     //execute 
     const result = basket.getTotalOfBasket()
     //verify
@@ -282,7 +282,7 @@ describe("Basket", () => {
       "variant": "Onion"
     }
     //execute 
-    const result = basket.getBagelPrice("Onion")
+    const result = basket.getBagelPrice("BGLO")
     //verify
     expect(result).toEqual(expected);
   });
@@ -292,7 +292,7 @@ describe("Basket", () => {
     const expected = 2.49
     basket.basketSize = 6
     for (let i = 0; i < 6; i++) {
-      basket.addBagelToBasket("Onion")
+      basket.addBagelToBasket("BGLO")
     }
     //execute 
     const result = basket.getTotalOfBasket()
@@ -305,7 +305,7 @@ describe("Basket", () => {
     const expected = 2.49
     basket.basketSize = 6
     for (let i = 0; i < 6; i++) {
-      basket.addBagelToBasket("Everything")
+      basket.addBagelToBasket("BGLE")
     }
     //execute 
     const result = basket.getTotalOfBasket()
@@ -318,7 +318,7 @@ describe("Basket", () => {
     const expected = 3.99
     basket.basketSize = 12
     for (let i = 0; i < 12; i++) {
-      basket.addBagelToBasket("Plain")
+      basket.addBagelToBasket("BGLP")
     }
     //execute 
     const result = basket.getTotalOfBasket()
@@ -331,13 +331,13 @@ describe("Basket", () => {
     const expected = 7.98 + 4.98 + 4.98
     basket.basketSize = 48
     for (let i = 0; i < 24; i++) {
-      basket.addBagelToBasket("Plain")
+      basket.addBagelToBasket("BGLP")
     }
     for (let i = 0; i < 12; i++) {
-      basket.addBagelToBasket("Onion")
+      basket.addBagelToBasket("BGLO")
     }
     for (let i = 0; i < 12; i++) {
-      basket.addBagelToBasket("Everything")
+      basket.addBagelToBasket("BGLE")
     }
     //execute 
     const result = basket.getTotalOfBasket()
